@@ -11,5 +11,6 @@ interface IssueContract {
 
     interface Presenter {
         fun retrieveIssues(state : String)
+        fun viewDestroyed()
     }
 }

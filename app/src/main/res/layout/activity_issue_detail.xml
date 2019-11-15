@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        tools:context=".view.activity.IssueDetailActivity">
+
+    <RelativeLayout
+            android:id="@+id/headerDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:src="@drawable/profile"
+                android:id="@+id/userAvatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+        />
+
+        <RelativeLayout
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/userAvatar"
+                android:layout_toLeftOf="@id/txtState">
+            <TextView
+                    android:id="@+id/txtCreatedByLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:text="Created by: "/>
+
+            <TextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtCreatedByLabel"
+                    android:textSize="12sp"
+                    android:text="pedrohn13"/>
+
+            <TextView
+                    android:id="@+id/txtDateLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtUserName"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:text="On "/>
+
+            <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtDateLabel"
+                    android:textSize="12sp"
+                    android:text="15/12/2018"/>
+        </RelativeLayout>
+
+
+        <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/txtState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@color/stateOpen"
+                android:textColor="#ffffff"
+                android:padding="20dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Open"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headerDetail"
+                    android:layout_above="@id/btnGoToGithub"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/item_list_background">
+        <TextView
+
+                android:padding="10dp"
+                android:background="@color/gitHubTitle"
+                android:id="@+id/txtTitleDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
+        />
+
+        <ScrollView
+                android:paddingBottom="3dp"
+                android:paddingTop="1dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:id="@+id/scrollMessage"
+                android:layout_below="@id/txtTitleDetail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/txtMessageDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+            />
+        </ScrollView>
+    </RelativeLayout>
+
+    <Button
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_button"
+            android:id="@+id/btnGoToGithub"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:text="See on GitHub"/>
+
+</RelativeLayout>

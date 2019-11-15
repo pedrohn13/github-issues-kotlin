@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:id="@+id/issueItemList"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/item_list_background">
+
+    <RelativeLayout
+            android:id="@+id/areaState"
+            android:padding="10dp"
+            android:background="@color/stateOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/txtState"
+                android:gravity="end"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Open"
+                android:textSize="12sp"/>
+    </RelativeLayout>
+
+    <TextView
+            android:layout_margin="40px"
+            android:id="@+id/txtTitle"
+            android:layout_below="@id/areaState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+    />
+
+
+</RelativeLayout>

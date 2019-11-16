@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#003E86</color>
 
-    <color name="stateOpen">#0BB791</color>
-    <color name="stateClosed">#C83531</color>
+    <color name="stateOpen">#2cbe4e</color>
+    <color name="stateClosed">#cb2431</color>
     <color name="gitHubTitle">#8A8D97</color>
     <color name="white">#ffffff</color>
 </resources>

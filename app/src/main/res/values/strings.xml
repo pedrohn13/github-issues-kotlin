@@ -3,4 +3,8 @@
     <string name="state_open">Open</string>
     <string name="state_closed">Closed</string>
     <string name="state_all">All</string>
+    <string name="see_on_github">See on GitHub</string>
+    <string name="open">Open</string>
+    <string name="on">On</string>
+    <string name="created_by">Created by:</string>
 </resources>

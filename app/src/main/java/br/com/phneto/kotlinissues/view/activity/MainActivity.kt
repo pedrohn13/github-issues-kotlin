@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-
 class MainActivity : AppCompatActivity(), IssueContract.View {
 
     val issuePresenter: IssuePresenter by inject { parametersOf(this) }

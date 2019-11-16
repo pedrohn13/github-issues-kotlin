@@ -22,24 +22,27 @@ import org.koin.core.parameter.parametersOf
 class MainActivity : AppCompatActivity(), IssueContract.View {
 
     private val issuePresenter: IssuePresenter by inject { parametersOf(this) }
+    private var selectedState: IssueState = IssueState.ALL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setRefreshListener()
+        setRadioListener()
+        loadListView()
         if (checkConnection()) {
-            loadListView()
-            setRadioListener()
-            retreiveIssueList(IssueState.ALL)
+            retreiveIssueList(selectedState)
         } else {
             showDialogNoConnection()
         }
     }
 
     private fun showDialogNoConnection() {
+        toggleRadios(false)
         showErrorDialog(
-            "No Internet Connection",
-            "The App Cannot Load the Issues. Verify your connection or try later."
+            getString(R.string.no_internet_connection),
+            getString(R.string.no_internet_message)
         )
     }
 
@@ -49,8 +52,11 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
         alertDialogBuilder.setMessage(message)
 
         alertDialogBuilder.setPositiveButton(
-            "Ok"
+            getString(R.string.ok)
         ) { _, _ ->
+            progressBar.visibility = View.INVISIBLE
+            reloadArea.visibility = View.VISIBLE
+            listIssue.visibility = View.INVISIBLE
         }
 
         val alert = alertDialogBuilder.create()
@@ -58,6 +64,7 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
     }
 
     override fun updateList(issues: List<Issue>) {
+        listIssue.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
         listIssue.adapter = IssueListAdapter(issues)
         toggleRadios(true)
@@ -65,7 +72,7 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
 
     override fun errorResponse(errorMessage: String) {
         progressBar.visibility = View.INVISIBLE
-        showErrorDialog("Unexpected Error", "Try again Later")
+        showErrorDialog(getString(R.string.error), getString(R.string.no_internet_message))
     }
 
     private fun loadListView() {
@@ -78,10 +85,18 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
         rdFilter.setOnCheckedChangeListener { _, checkedId ->
             val radio: RadioButton = findViewById(checkedId)
             when (radio.text.toString().toLowerCase()) {
-                IssueState.ALL.state -> retreiveIssueList(IssueState.ALL)
-                IssueState.OPEN.state -> retreiveIssueList(IssueState.OPEN)
-                IssueState.CLOSED.state -> retreiveIssueList(IssueState.CLOSED)
+                IssueState.ALL.state -> selectedState = IssueState.ALL
+                IssueState.OPEN.state -> selectedState = IssueState.OPEN
+                IssueState.CLOSED.state -> selectedState = IssueState.CLOSED
             }
+            retreiveIssueList(selectedState)
+        }
+    }
+
+    private fun setRefreshListener() {
+        refreshList.setOnClickListener {
+            reloadArea.visibility = View.INVISIBLE
+            retreiveIssueList(selectedState)
         }
     }
 

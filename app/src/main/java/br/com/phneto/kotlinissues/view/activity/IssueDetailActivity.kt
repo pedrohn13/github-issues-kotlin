@@ -46,7 +46,7 @@ class IssueDetailActivity : AppCompatActivity() {
         txtState.text = issue.state.capitalize()
         txtUserName.text = issue.user.login
         txtTitleDetail.text = issue.title
-        txtMessageDetail.text = if (issue.body == "") "No description given" else issue.body
+        txtMessageDetail.text = if (issue.body.trim().isEmpty()) getString(R.string.no_description) else issue.body
 
         val f = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.getDefault())
         txtDate.text = f.format(Date())

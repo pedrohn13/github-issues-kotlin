@@ -8,4 +8,10 @@
     <string name="created_by">Opened by</string>
     <string name="issue_description">Opened by %1$s on %2$s</string>
     <string name="issue_num">#%1$s</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_internet_message">The App Cannot Load the Issues. Verify your connection or try later.</string>
+    <string name="error">Error</string>
+    <string name="ok">Ok</string>
+    <string name="no_description">No description given</string>
 </resources>

@@ -4,7 +4,8 @@
     <string name="state_closed">Closed</string>
     <string name="state_all">All</string>
     <string name="see_on_github">See on GitHub</string>
-    <string name="open">Open</string>
-    <string name="on">On</string>
-    <string name="created_by">Created by:</string>
+    <string name="on">on</string>
+    <string name="created_by">Opened by</string>
+    <string name="issue_description">Opened by %1$s on %2$s</string>
+    <string name="issue_num">#%1$s</string>
 </resources>

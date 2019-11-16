@@ -63,6 +63,6 @@ class GitHubFetchDataTest : AutoCloseKoinTest() {
     }
 
     private fun createIssue(issueState: IssueState): Issue {
-        return Issue(1, "", Date(), User(0, "", ""), issueState.state, "", "")
+        return Issue(1, 0, "", Date(), User(0, "", ""), issueState.state, "", "")
     }
 }

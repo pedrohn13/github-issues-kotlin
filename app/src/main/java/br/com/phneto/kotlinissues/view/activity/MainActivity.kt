@@ -21,7 +21,7 @@ import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity(), IssueContract.View {
 
-    val issuePresenter: IssuePresenter by inject { parametersOf(this) }
+    private val issuePresenter: IssuePresenter by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
         alertDialogBuilder.setPositiveButton(
             "Ok"
         ) { _, _ ->
-            finish()
         }
 
         val alert = alertDialogBuilder.create()

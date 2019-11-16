@@ -1,8 +1,8 @@
 package br.com.phneto.kotlinissues.view.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import br.com.phneto.kotlinissues.R
 import br.com.phneto.kotlinissues.model.Issue
 import br.com.phneto.kotlinissues.view.holder.IssueItemListHolder

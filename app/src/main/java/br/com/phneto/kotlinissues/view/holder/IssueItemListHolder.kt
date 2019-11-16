@@ -1,10 +1,10 @@
 package br.com.phneto.kotlinissues.view.holder
 
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import br.com.phneto.kotlinissues.R
 import br.com.phneto.kotlinissues.model.Issue
 import br.com.phneto.kotlinissues.model.IssueState
@@ -19,7 +19,7 @@ class IssueItemListHolder(view: View) : RecyclerView.ViewHolder(view), View.OnCl
     private val issueItemList = view.findViewById<RelativeLayout>(R.id.issueItemList)
     private val context = view.context
 
-    private lateinit var mIssue : Issue
+    private lateinit var mIssue: Issue
 
     fun setItemFields(issue: Issue) {
         mIssue = issue

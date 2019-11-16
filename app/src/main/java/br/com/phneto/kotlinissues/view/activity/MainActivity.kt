@@ -3,12 +3,12 @@ package br.com.phneto.kotlinissues.view.activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.RadioButton
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.phneto.kotlinissues.R
 import br.com.phneto.kotlinissues.contracts.IssueContract
 import br.com.phneto.kotlinissues.model.Issue
@@ -19,10 +19,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-
 class MainActivity : AppCompatActivity(), IssueContract.View {
 
-    val issuePresenter: IssuePresenter by inject { parametersOf(this) }
+    private val issuePresenter: IssuePresenter by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +51,6 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
         alertDialogBuilder.setPositiveButton(
             "Ok"
         ) { _, _ ->
-            finish()
         }
 
         val alert = alertDialogBuilder.create()

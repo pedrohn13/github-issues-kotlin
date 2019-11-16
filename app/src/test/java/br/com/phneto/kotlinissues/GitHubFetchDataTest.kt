@@ -18,11 +18,11 @@ import java.util.*
 
 class GitHubFetchDataTest : AutoCloseKoinTest() {
 
-    lateinit var data: List<Issue>
-    val totalOpenIssues = 5
-    val totalClosedIssues = 15
+    private lateinit var data: List<Issue>
+    private val totalOpenIssues = 5
+    private val totalClosedIssues = 15
 
-    val dataResurce: GithubIssueRemoteDataSource by inject()
+    private val dataResurce: GithubIssueRemoteDataSource by inject()
 
     @Before
     fun before() {
@@ -55,14 +55,14 @@ class GitHubFetchDataTest : AutoCloseKoinTest() {
         assertEquals(totalClosedIssues, result.values().first().size)
     }
 
-    fun createIssueList(): List<Issue> {
+    private fun createIssueList(): List<Issue> {
         var listIssues = ArrayList<Issue>()
         for (i in 0 until totalOpenIssues) listIssues.add(createIssue(IssueState.OPEN))
         for (i in 0 until totalClosedIssues) listIssues.add(createIssue(IssueState.CLOSED))
         return listIssues
     }
 
-    fun createIssue(issueState: IssueState): Issue {
-        return Issue(1, "", Date(), User(0, "", ""), issueState.state, "", "")
+    private fun createIssue(issueState: IssueState): Issue {
+        return Issue(1, 0, "", Date(), User(0, "", ""), issueState.state, "", "")
     }
 }

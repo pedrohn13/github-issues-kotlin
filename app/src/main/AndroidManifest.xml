@@ -9,16 +9,19 @@
     <application
             android:name=".MyApplication"
             android:allowBackup="true"
-            android:icon="@drawable/profile"
+            android:icon="@drawable/icon"
             android:label="@string/app_name"
             android:roundIcon="@drawable/profile"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".view.activity.IssueDetailActivity"
-                  android:screenOrientation="portrait">
-        </activity>
+                  android:screenOrientation="portrait"/>
         <activity android:name=".view.activity.MainActivity"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"/>
+        <activity
+                android:name=".view.activity.SplashScreen"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

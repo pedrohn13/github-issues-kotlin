@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kotlin GitHub Issues</string>
+    <string name="app_name">Kotlin Issues</string>
     <string name="state_open">Open</string>
     <string name="state_closed">Closed</string>
     <string name="state_all">All</string>

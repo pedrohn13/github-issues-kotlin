@@ -42,14 +42,13 @@
                 android:id="@+id/listIssue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical"
-        />
+                android:scrollbars="vertical"/>
 
         <RelativeLayout
                 android:id="@+id/progressBar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-        >
+                android:layout_height="match_parent">
+
             <View android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:background="@color/colorPrimary"
@@ -59,8 +58,7 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_height="match_parent"
-            />
+                    android:layout_height="match_parent"/>
         </RelativeLayout>
 
 
@@ -68,8 +66,7 @@
                 android:id="@+id/reloadArea"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="invisible"
-        >
+                android:visibility="invisible">
             <TextView
                     android:id="@+id/txtNoInternet"
                     android:layout_width="wrap_content"
@@ -79,8 +76,7 @@
                     android:text="@string/no_internet_connection"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold"
-                    android:gravity="center"
-            />
+                    android:gravity="center"/>
 
             <com.google.android.material.button.MaterialButton
                     android:layout_marginTop="10dp"

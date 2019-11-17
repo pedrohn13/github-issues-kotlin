@@ -16,8 +16,7 @@
                 android:src="@drawable/profile"
                 android:id="@+id/userAvatar"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-        />
+                android:layout_height="100dp"/>
 
         <RelativeLayout
                 android:padding="5dp"
@@ -63,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:textColor="#ffffff"
+                android:textColor="@color/white"
                 android:padding="10dp"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
@@ -79,7 +78,7 @@
         <TextView
 
                 android:padding="10dp"
-                android:background="@color/gitHubTitle"
+                android:background="@color/detailTitleColor"
                 android:id="@+id/txtTitleDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

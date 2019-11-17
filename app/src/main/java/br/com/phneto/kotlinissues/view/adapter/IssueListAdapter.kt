@@ -19,9 +19,7 @@ class IssueListAdapter(private val dataSet: List<Issue>) : RecyclerView.Adapter<
         )
     }
 
-    override fun getItemCount(): Int {
-        return dataSet.count()
-    }
+    override fun getItemCount() = dataSet.count()
 
     override fun onBindViewHolder(lineHolder: IssueItemListHolder, index: Int) {
         lineHolder.setItemFields(dataSet[index])

@@ -2,8 +2,6 @@ package br.com.phneto.kotlinissues.view.holder
 
 import android.content.Intent
 import android.view.View
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.phneto.kotlinissues.R
 import br.com.phneto.kotlinissues.model.Issue
@@ -31,8 +29,11 @@ class IssueItemListHolder(view: View) : RecyclerView.ViewHolder(view), View.OnCl
         txtIssueNum.text = context.getString(R.string.issue_num, issue.number.toString())
         txtState.text = issue.state.capitalize()
         txtTitle.text = issue.title
+
         val f = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.getDefault())
-        txtDescription.text = context.getString(R.string.issue_description, issue.user.login, f.format(issue.created_at))
+        txtDescription.text =
+            context.getString(R.string.issue_description, issue.user.login, f.format(issue.created_at))
+
         issueItemList.setOnClickListener(this)
         setStateColor(issue.state)
     }

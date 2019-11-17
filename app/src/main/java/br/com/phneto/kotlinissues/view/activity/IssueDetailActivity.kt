@@ -11,7 +11,7 @@ import br.com.phneto.kotlinissues.util.Constants
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_issue_detail.*
 import java.text.DateFormat
-import java.util.*
+import java.util.Locale
 
 
 class IssueDetailActivity : AppCompatActivity() {

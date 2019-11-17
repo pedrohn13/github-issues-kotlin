@@ -11,12 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.phneto.kotlinissues.viewmodel.IssuesViewModel
 import br.com.phneto.kotlinissues.R
 import br.com.phneto.kotlinissues.model.Issue
 import br.com.phneto.kotlinissues.model.IssueState
 import br.com.phneto.kotlinissues.util.Constants
 import br.com.phneto.kotlinissues.view.adapter.IssueListAdapter
+import br.com.phneto.kotlinissues.viewmodel.IssuesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         loadListView()
 
         if (checkConnection()) {
-            retreiveIssueList(selectedState)
+            retrieveIssueList(selectedState)
         } else {
             showDialogNoConnection()
         }
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         toggleRadios(true)
     }
 
-    fun errorResponse() {
+    private fun errorResponse() {
         progressBar.visibility = View.INVISIBLE
         showErrorDialog(getString(R.string.error), getString(R.string.no_internet_message))
     }
@@ -103,18 +103,18 @@ class MainActivity : AppCompatActivity() {
                 IssueState.OPEN.state -> selectedState = IssueState.OPEN
                 IssueState.CLOSED.state -> selectedState = IssueState.CLOSED
             }
-            retreiveIssueList(selectedState)
+            retrieveIssueList(selectedState)
         }
     }
 
     private fun setRefreshListener() {
         refreshList.setOnClickListener {
             reloadArea.visibility = View.INVISIBLE
-            retreiveIssueList(selectedState)
+            retrieveIssueList(selectedState)
         }
     }
 
-    private fun retreiveIssueList(issueState: IssueState) {
+    private fun retrieveIssueList(issueState: IssueState) {
         toggleRadios(false)
         progressBar.visibility = View.VISIBLE
         issueViewModel.retrieveIssues(issueState.state)

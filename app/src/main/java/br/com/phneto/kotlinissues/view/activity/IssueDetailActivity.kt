@@ -49,7 +49,7 @@ class IssueDetailActivity : AppCompatActivity() {
         txtMessageDetail.text = if (issue.body.trim().isEmpty()) getString(R.string.no_description) else issue.body
 
         val f = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.getDefault())
-        txtDate.text = f.format(Date())
+        txtDate.text = f.format(issue.created_at)
     }
 
     private fun setStateColor(state: String) {

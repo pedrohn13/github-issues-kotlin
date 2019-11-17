@@ -7,35 +7,49 @@ import android.view.View
 import android.widget.RadioButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.com.phneto.kotlinissues.viewmodel.IssuesViewModel
 import br.com.phneto.kotlinissues.R
-import br.com.phneto.kotlinissues.contracts.IssueContract
 import br.com.phneto.kotlinissues.model.Issue
 import br.com.phneto.kotlinissues.model.IssueState
-import br.com.phneto.kotlinissues.presenter.IssuePresenter
+import br.com.phneto.kotlinissues.util.Constants
 import br.com.phneto.kotlinissues.view.adapter.IssueListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
 
-class MainActivity : AppCompatActivity(), IssueContract.View {
+class MainActivity : AppCompatActivity() {
 
-    private val issuePresenter: IssuePresenter by inject { parametersOf(this) }
+    private lateinit var issueViewModel: IssuesViewModel
     private var selectedState: IssueState = IssueState.ALL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setViewModel()
         setRefreshListener()
         setRadioListener()
         loadListView()
+
         if (checkConnection()) {
             retreiveIssueList(selectedState)
         } else {
             showDialogNoConnection()
         }
+    }
+
+    private fun setViewModel() {
+        issueViewModel = ViewModelProviders.of(this).get(IssuesViewModel::class.java)
+        issueViewModel.issuesLiveData.observe(this, Observer {
+            updateList(it)
+        })
+        issueViewModel.statusResponseLiveData.observe(this, Observer {
+            if (it == Constants.FAIL) {
+                errorResponse()
+            }
+        })
     }
 
     private fun showDialogNoConnection() {
@@ -63,14 +77,14 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
         alert.show()
     }
 
-    override fun updateList(issues: List<Issue>) {
+    private fun updateList(issues: List<Issue>) {
         listIssue.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
         listIssue.adapter = IssueListAdapter(issues)
         toggleRadios(true)
     }
 
-    override fun errorResponse(errorMessage: String) {
+    fun errorResponse() {
         progressBar.visibility = View.INVISIBLE
         showErrorDialog(getString(R.string.error), getString(R.string.no_internet_message))
     }
@@ -103,7 +117,7 @@ class MainActivity : AppCompatActivity(), IssueContract.View {
     private fun retreiveIssueList(issueState: IssueState) {
         toggleRadios(false)
         progressBar.visibility = View.VISIBLE
-        issuePresenter.retrieveIssues(issueState.state)
+        issueViewModel.retrieveIssues(issueState.state)
     }
 
     private fun toggleRadios(enabled: Boolean) {

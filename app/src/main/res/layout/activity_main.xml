@@ -1,95 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/mainView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.activity.MainActivity">
+        tools:context="br.com.phneto.kotlinissues.view.activity.MainActivity">
 
     <RelativeLayout
-            android:id="@+id/areaFilter"
+            android:id="@+id/mainView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <RadioGroup
-                android:id="@+id/rdFilter"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:id="@+id/areaFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <RadioGroup
+                    android:id="@+id/rdFilter"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/rdStateAll"
+                    android:orientation="horizontal">
+                <RadioButton
+                        android:id="@+id/rdStateAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All"/>
+                <RadioButton
+                        android:id="@+id/rdStateOpen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Open"/>
+                <RadioButton
+                        android:id="@+id/rdStateClosed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Closed"/>
+            </RadioGroup>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/areaFilter"
+                android:id="@+id/listIssue"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@+id/rdStateAll"
-                android:orientation="horizontal">
-            <RadioButton
-                    android:id="@+id/rdStateAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="All"/>
-            <RadioButton
-                    android:id="@+id/rdStateOpen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Open"/>
-            <RadioButton
-                    android:id="@+id/rdStateClosed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Closed"/>
-        </RadioGroup>
-    </RelativeLayout>
+                android:scrollbars="vertical"
+        />
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_below="@id/areaFilter"
-            android:id="@+id/listIssue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"/>
-
-    <RelativeLayout
-            android:id="@+id/progressBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
-        <View android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/colorPrimary"
-              android:alpha="0.5"/>
-
-        <ProgressBar
-                style="?android:attr/progressBarStyle"
-                android:layout_width="100dp"
-                android:layout_centerHorizontal="true"
+        <RelativeLayout
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-        />
+        >
+            <View android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:background="@color/colorPrimary"
+                  android:alpha="0.5"/>
+
+            <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="match_parent"
+            />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+                android:id="@+id/reloadArea"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+        >
+            <TextView
+                    android:id="@+id/txtNoInternet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/no_internet_connection"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"
+                    android:gravity="center"
+            />
+
+            <com.google.android.material.button.MaterialButton
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/refreshList"
+                    android:layout_below="@id/txtNoInternet"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:text="@string/try_again"/>
+        </RelativeLayout>
+
     </RelativeLayout>
-
-
-    <RelativeLayout
-            android:id="@+id/reloadArea"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="invisible"
-    >
-        <TextView
-                android:id="@+id/txtNoInternet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/no_internet_connection"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold"
-                android:gravity="center"
-        />
-
-        <com.google.android.material.button.MaterialButton
-                android:layout_marginTop="10dp"
-                android:id="@+id/refreshList"
-                android:layout_below="@id/txtNoInternet"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:text="@string/try_again"/>
-    </RelativeLayout>
-
-</RelativeLayout>
+</layout>

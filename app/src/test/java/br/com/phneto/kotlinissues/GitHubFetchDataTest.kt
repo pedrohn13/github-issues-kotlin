@@ -6,7 +6,7 @@ import br.com.phneto.kotlinissues.model.Issue
 import br.com.phneto.kotlinissues.model.IssueState
 import br.com.phneto.kotlinissues.model.User
 import io.reactivex.Observable
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.koin.core.context.startKoin

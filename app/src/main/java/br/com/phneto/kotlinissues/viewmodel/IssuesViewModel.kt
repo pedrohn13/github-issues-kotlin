@@ -27,8 +27,8 @@ class IssuesViewModel : ViewModel(), KoinComponent {
             statusResponseLiveData.value = Constants.FAIL
         })
 
-        if (subscribe != null) {
-            compositeDisposable.add(subscribe)
+        subscribe?.let {
+            compositeDisposable.add(it)
         }
     }
 

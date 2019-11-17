@@ -9,15 +9,15 @@ import br.com.phneto.kotlinissues.view.holder.IssueItemListHolder
 
 class IssueListAdapter(private val dataSet: List<Issue>) : RecyclerView.Adapter<IssueItemListHolder>() {
 
-    override fun onCreateViewHolder(view: ViewGroup, i: Int): IssueItemListHolder {
-        return IssueItemListHolder(
+    override fun onCreateViewHolder(view: ViewGroup, i: Int): IssueItemListHolder =
+        IssueItemListHolder(
             LayoutInflater.from(view.context).inflate(
                 R.layout.issue_item_list,
                 view,
                 false
             )
         )
-    }
+
 
     override fun getItemCount() = dataSet.count()
 

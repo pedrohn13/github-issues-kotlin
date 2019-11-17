@@ -10,7 +10,7 @@ class GithubIssueRemoteDataSource : IGitHubAPI {
 
     private val baseURL = "https://api.github.com/repos/JetBrains/kotlin/"
 
-    private var api : IGitHubAPI
+    private var api: IGitHubAPI
 
     init {
         val retrofit: Retrofit = Retrofit.Builder()
@@ -21,7 +21,7 @@ class GithubIssueRemoteDataSource : IGitHubAPI {
 
         this.api = retrofit.create(IGitHubAPI::class.java)
     }
-    override fun getAllIssuesObservable(state: String, filter: String): Observable<List<Issue>> {
-        return this.api.getAllIssuesObservable(state, filter)
-    }
+
+    override fun getAllIssuesObservable(state: String, filter: String): Observable<List<Issue>> =
+        this.api.getAllIssuesObservable(state, filter)
 }

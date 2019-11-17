@@ -12,9 +12,9 @@ class GitHubIssuesService : KoinComponent {
 
     private val githubIssueDataSource: GithubIssueRemoteDataSource by inject()
 
-    fun getAllIssues(state: String): Observable<List<Issue>>? {
-        return githubIssueDataSource.getAllIssuesObservable(state)
+    fun getAllIssues(state: String): Observable<List<Issue>>? =
+        githubIssueDataSource.getAllIssuesObservable(state)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
-    }
+
 }

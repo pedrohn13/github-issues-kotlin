@@ -33,23 +33,21 @@ class MainActivity : AppCompatActivity() {
         setRadioListener()
         loadListView()
 
-        if (checkConnection()) {
-            retrieveIssueList(selectedState)
-        } else {
-            showDialogNoConnection()
-        }
+        if (checkConnection()) retrieveIssueList(selectedState) else showDialogNoConnection()
     }
 
     private fun setViewModel() {
         issueViewModel = ViewModelProviders.of(this).get(IssuesViewModel::class.java)
-        issueViewModel.issuesLiveData.observe(this, Observer {
-            updateList(it)
-        })
-        issueViewModel.statusResponseLiveData.observe(this, Observer {
-            if (it == Constants.FAIL) {
-                errorResponse()
-            }
-        })
+        with(issueViewModel) {
+            issuesLiveData.observe(this@MainActivity, Observer {
+                updateList(it)
+            })
+            statusResponseLiveData.observe(this@MainActivity, Observer {
+                if (it == Constants.FAIL) {
+                    errorResponse()
+                }
+            })
+        }
     }
 
     private fun showDialogNoConnection() {
@@ -62,15 +60,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun showErrorDialog(title: String, message: String) {
         val alertDialogBuilder = AlertDialog.Builder(this)
-        alertDialogBuilder.setTitle(title)
-        alertDialogBuilder.setMessage(message)
-
-        alertDialogBuilder.setPositiveButton(
-            getString(R.string.ok)
-        ) { _, _ ->
-            progressBar.visibility = View.INVISIBLE
-            reloadArea.visibility = View.VISIBLE
-            listIssue.visibility = View.INVISIBLE
+        with(alertDialogBuilder) {
+            setTitle(title)
+            setMessage(message)
+            setPositiveButton(
+                getString(R.string.ok)
+            ) { _, _ ->
+                progressBar.visibility = View.INVISIBLE
+                reloadArea.visibility = View.VISIBLE
+                listIssue.visibility = View.INVISIBLE
+            }
         }
 
         val alert = alertDialogBuilder.create()
@@ -78,8 +77,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateList(issues: List<Issue>) {
-        listIssue.visibility = View.VISIBLE
         progressBar.visibility = View.INVISIBLE
+        listIssue.visibility = View.VISIBLE
         listIssue.adapter = IssueListAdapter(issues)
         toggleRadios(true)
     }
